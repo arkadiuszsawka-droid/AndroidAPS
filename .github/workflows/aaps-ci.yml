@@ -185,7 +185,7 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-
+                            
       - name: Build APKs
         run: |
               ./gradlew :app:assemble${{ env.BUILD_VARIANT }} :wear:assemble${{ env.BUILD_VARIANT }} \
@@ -204,14 +204,14 @@ jobs:
      #   run: |
      #     mv app/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
      #     mv wear/build/outputs/apk/${{ env.VARIANT_FLAVOR }}/${{ env.VARIANT_TYPE }}/*.apk aaps-wear-${{ env.VERSION }}${{ env.VERSION_SUFFIX }}.apk
-
+                              
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
           name: AAPS-APK
-          path: 
-            - app/build/outputs/apk/**/*.apk
-            - wear/build/outputs/apk/**/*.apk
+          path: | 
+            app/build/outputs/apk/**/*.apk
+            wear/build/outputs/apk/**/*.apk
       #- name: Upload APKs to Google Drive
        # run: |
          # set -e
